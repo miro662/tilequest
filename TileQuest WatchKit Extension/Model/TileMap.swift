@@ -7,10 +7,6 @@
 
 import Foundation
 
-enum TileMapError: Error {
-    case outOfBounds
-}
-
 class TileMap<T> {
     var buf: [T]
     let size: IntVector
@@ -22,21 +18,17 @@ class TileMap<T> {
         self.buf = [T](repeating: initialTileValue, count: capacity)
     }
     
-    func getTile(at position: IntVector) throws -> T {
-        let position = try self.getPositionInBuf(of: position)
+    func getTile(at position: IntVector) -> T {
+        let position = self.getPositionInBuf(of: position)
         return buf[position]
     }
     
-    func setTile(tile: T, at position: IntVector) throws {
-        let position = try self.getPositionInBuf(of: position)
+    func setTile(tile: T, at position: IntVector) {
+        let position = self.getPositionInBuf(of: position)
         buf[position] = tile
     }
     
-    private func getPositionInBuf(of: IntVector) throws -> Int {
-        if self.size.contains(other: of) {
-            return self.size.x * of.y + of.x
-        } else {
-            throw TileMapError.outOfBounds
-        }
+    private func getPositionInBuf(of: IntVector) -> Int {
+        return self.size.x * of.y + of.x
     }
 }
