@@ -7,11 +7,15 @@
 
 import Foundation
 
-struct IntVector {
+struct IntVector: CustomStringConvertible {
     let x: Int;
     let y: Int;
     
     func contains(other: IntVector) -> Bool {
         return self.x >= other.x && self.y >= other.y
+    }
+    
+    var description: String {
+        return "(\(x), \(y))"
     }
 }

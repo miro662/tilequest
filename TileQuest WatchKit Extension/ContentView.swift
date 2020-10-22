@@ -11,7 +11,9 @@ struct ContentView: View {
     var body: some View {
         let sampleImage = UIImage(named: "TiledImage")!
         let tilemap = getTilemap()
-        TilemapView(image: sampleImage, tilemap: tilemap, spacing: 5.0).navigationBarHidden(true)
+        TilemapView(image: sampleImage, tilemap: tilemap, spacing: 5.0, onTileTapped: {
+            position in print(position.description)
+        }).navigationBarHidden(true)
     }
     
     private func getTilemap() -> TileMap<TilemapViewTile> {

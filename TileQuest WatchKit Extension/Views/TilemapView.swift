@@ -16,6 +16,7 @@ struct TilemapView: View {
     let image: UIImage
     let tilemap: TileMap<TilemapViewTile>
     let spacing: CGFloat
+    let onTileTapped: (IntVector) -> ()
     
     var body: some View {
         HStack(spacing: spacing) {
@@ -29,6 +30,14 @@ struct TilemapView: View {
     private func tile(at position: IntVector) -> some View {
         let tile = tilemap.getTile(at: position)
         return TileView(tiledImage: self.image, tilePosition: tile, tilemapSize: tilemap.size).aspectRatio(1, contentMode: .fit)
+            .onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
+                switch tile {
+                case .tile(let position):
+                    self.onTileTapped(position)
+                default:
+                    break
+                }
+            })
 
     }
     
@@ -46,7 +55,7 @@ struct TilemapView: View {
 struct TilemapView_Previews: PreviewProvider {
     static var previews: some View {
         let sampleImage = UIImage(named: "TiledImage")!
-        TilemapView(image: sampleImage, tilemap: getTilemap(), spacing: 6.0)
+        TilemapView(image: sampleImage, tilemap: getTilemap(), spacing: 6.0, onTileTapped: {x in return ()})
     }
 
     private static func getTilemap() -> TileMap<TilemapViewTile> {
