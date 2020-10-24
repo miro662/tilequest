@@ -32,7 +32,7 @@ struct TilemapView: View {
         return TileView(tiledImage: self.image, tilePosition: tile, tilemapSize: tilemap.size).aspectRatio(1, contentMode: .fit)
             .onTapGesture(count: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/, perform: {
                 switch tile {
-                case .tile(let position):
+                case .tile(_):
                     self.onTileTapped(position)
                 default:
                     break

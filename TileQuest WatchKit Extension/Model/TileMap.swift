@@ -37,6 +37,12 @@ class TileMap<T> {
         buf[position] = tile
     }
     
+    func swap(_ pos1: IntVector, _ pos2: IntVector) {
+        let pos1buf = getTile(at: pos1)
+        setTile(tile: getTile(at: pos2), at: pos1)
+        setTile(tile: pos1buf, at: pos2)
+    }
+    
     func map<M>(_ mapper: (T) -> M) -> TileMap<M> {
         return TileMap<M>(size: self.size, initialTileValueBuilder: {mapper(self.getTile(at: $0))})
     }

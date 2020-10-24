@@ -20,8 +20,17 @@ struct ContentView: View {
                 return TilemapViewTile.empty
             }
         }
-        TilemapView(image: sampleImage, tilemap: tilemap, spacing: 5.0, onTileTapped: {
-            position in print(position.description)
+        
+        TilemapView(image: sampleImage, tilemap: tilemap, spacing: 5.0, onTileTapped: {position in
+            print("directions " + gameState.availableDirections.description)
+            if let direction = gameState.getDirectionForTileAt(position: position) {
+                print(gameState.availableDirections.description)
+                if let newState = gameState.moved(direction) {
+                    gameState = newState
+                }
+            } else {
+                // invaild tile
+            }
         }).navigationBarHidden(true)
     }
 }
