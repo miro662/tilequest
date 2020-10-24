@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var gameState: GameState = GameState.correct(size: IntVector(x: 4, y: 4))
+    @State var gameState: GameState = GameState.shuffled(times: 8, size: IntVector(x: 4, y: 4))
     
     var body: some View {
         let sampleImage = UIImage(named: "TiledImage")!

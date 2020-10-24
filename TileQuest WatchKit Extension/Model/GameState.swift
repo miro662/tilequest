@@ -42,6 +42,14 @@ class GameState {
         return GameState(map: map, size: size, empty: empty)
     }
     
+    static func shuffled(times: Int, size: IntVector) -> GameState {
+        var state = correct(size: size)
+        for _ in 0..<times {
+            state = state.movedRandomly()
+        }
+        return state
+    }
+    
     var availableDirections: [Direction] {
         var directions: [Direction] = []
         if empty.x > 0 {
@@ -78,7 +86,7 @@ class GameState {
         return .none
     }
     
-    func getSwappedElementPosition(_ direction: Direction) -> IntVector? {
+    private func getSwappedElementPosition(_ direction: Direction) -> IntVector? {
         if !availableDirections.contains(direction) {
             return .none
         }
@@ -93,5 +101,10 @@ class GameState {
         case .right:
             return IntVector(x: empty.x - 1, y: empty.y)
         }
+    }
+    
+    private func movedRandomly() -> GameState {
+        let chosenDirection = availableDirections.randomElement()!
+        return moved(chosenDirection)!
     }
 }
