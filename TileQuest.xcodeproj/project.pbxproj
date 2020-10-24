@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7758736025447C4100A65B81 /* VictoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7758735F25447C4100A65B81 /* VictoryView.swift */; };
 		7786476A254209FD0080EA52 /* TileQuest WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 77864769254209FD0080EA52 /* TileQuest WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7786476F254209FD0080EA52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7786476E254209FD0080EA52 /* Assets.xcassets */; };
 		77864776254209FE0080EA52 /* TileQuest WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 77864775254209FE0080EA52 /* TileQuest WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -67,6 +68,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7758735F25447C4100A65B81 /* VictoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VictoryView.swift; sourceTree = "<group>"; };
 		77864765254209FC0080EA52 /* TileQuest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TileQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77864769254209FD0080EA52 /* TileQuest WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TileQuest WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7786476E254209FD0080EA52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			children = (
 				778647AA254210170080EA52 /* TilemapView.swift */,
 				778647B2254211280080EA52 /* TileView.swift */,
+				7758735F25447C4100A65B81 /* VictoryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 			files = (
 				7786479D25420A780080EA52 /* IntVector.swift in Sources */,
 				7786477F254209FE0080EA52 /* NotificationController.swift in Sources */,
+				7758736025447C4100A65B81 /* VictoryView.swift in Sources */,
 				778647A525420AEA0080EA52 /* TileMap.swift in Sources */,
 				778647AB254210170080EA52 /* TilemapView.swift in Sources */,
 				778647B3254211280080EA52 /* TileView.swift in Sources */,

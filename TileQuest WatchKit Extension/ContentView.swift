@@ -8,11 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var gameState: GameState = GameState.shuffled(times: 8, size: IntVector(x: 4, y: 4))
+    static let shuffles = 64
+    @State var gameState: GameState = GameState.shuffled(times: shuffles, size: IntVector(x: 4, y: 4))
     
     var body: some View {
         let sampleImage = UIImage(named: "TiledImage")!
-        let tilemap: TileMap<TilemapViewTile> = gameState.map.map {
+        
+        ZStack {
+            TilemapView(image: sampleImage, tilemap: tilemap, spacing: 5.0, onTileTapped: {position in
+                if (!gameState.correct) {
+                    moveTile(at: position)
+                }
+            }).navigationBarHidden(true)
+            
+            if (gameState.correct) {
+                VictoryView(onPlayAgain: {
+                    gameState = GameState.shuffled(times: ContentView.shuffles, size: IntVector(x: 4, y: 4))
+                })
+            }
+        }
+    }
+    
+    var tilemap: TileMap<TilemapViewTile> {
+        gameState.map.map {
             switch $0 {
             case Tile.occupied(let position):
                 return TilemapViewTile.tile(position)
@@ -20,18 +38,17 @@ struct ContentView: View {
                 return TilemapViewTile.empty
             }
         }
-        
-        TilemapView(image: sampleImage, tilemap: tilemap, spacing: 5.0, onTileTapped: {position in
-            print("directions " + gameState.availableDirections.description)
-            if let direction = gameState.getDirectionForTileAt(position: position) {
-                print(gameState.availableDirections.description)
-                if let newState = gameState.moved(direction) {
-                    gameState = newState
-                }
-            } else {
-                // invaild tile
+    }
+    
+    func moveTile(at position: IntVector) {
+        if let direction = gameState.getDirectionForTileAt(position: position) {
+            print(gameState.availableDirections.description)
+            if let newState = gameState.moved(direction) {
+                gameState = newState
             }
-        }).navigationBarHidden(true)
+        } else {
+            // invaild tile
+        }
     }
 }
 

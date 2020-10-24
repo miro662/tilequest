@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Tile {
+enum Tile: Equatable {
     case occupied(IntVector)
     case empty
 }
@@ -84,6 +84,18 @@ class GameState {
             }
         }
         return .none
+    }
+    
+    var correct: Bool {
+        map.reduce(initialValue: true) {position, tile, correct in
+            if position == empty && tile == .empty {
+                return correct
+            } else if position != empty && tile == .occupied(position) {
+                return correct
+            } else {
+                return false
+            }
+        }
     }
     
     private func getSwappedElementPosition(_ direction: Direction) -> IntVector? {

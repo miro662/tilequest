@@ -47,6 +47,14 @@ class TileMap<T> {
         return TileMap<M>(size: self.size, initialTileValueBuilder: {mapper(self.getTile(at: $0))})
     }
     
+    func reduce<R>(initialValue: R, reducer: (IntVector, T, R) -> R) -> R{
+        var value = initialValue;
+        for position in size.rangeTo() {
+            value = reducer(position, getTile(at: position), value)
+        }
+        return value
+    }
+    
     private func getPositionInBuf(of: IntVector) -> Int {
         return self.size.x * of.y + of.x
     }
