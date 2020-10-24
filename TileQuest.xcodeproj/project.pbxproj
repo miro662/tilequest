@@ -21,6 +21,7 @@
 		778647A525420AEA0080EA52 /* TileMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778647A425420AEA0080EA52 /* TileMap.swift */; };
 		778647AB254210170080EA52 /* TilemapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778647AA254210170080EA52 /* TilemapView.swift */; };
 		778647B3254211280080EA52 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778647B2254211280080EA52 /* TileView.swift */; };
+		77FDE57D25445E5000A0A874 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FDE57C25445E5000A0A874 /* GameState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		778647A425420AEA0080EA52 /* TileMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileMap.swift; sourceTree = "<group>"; };
 		778647AA254210170080EA52 /* TilemapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilemapView.swift; sourceTree = "<group>"; };
 		778647B2254211280080EA52 /* TileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
+		77FDE57C25445E5000A0A874 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 			children = (
 				7786479C25420A780080EA52 /* IntVector.swift */,
 				778647A425420AEA0080EA52 /* TileMap.swift */,
+				77FDE57C25445E5000A0A874 /* GameState.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				778647B3254211280080EA52 /* TileView.swift in Sources */,
 				7786477D254209FE0080EA52 /* ContentView.swift in Sources */,
 				77864783254209FE0080EA52 /* ComplicationController.swift in Sources */,
+				77FDE57D25445E5000A0A874 /* GameState.swift in Sources */,
 				7786477B254209FE0080EA52 /* TileQuestApp.swift in Sources */,
 				77864781254209FE0080EA52 /* NotificationView.swift in Sources */,
 			);

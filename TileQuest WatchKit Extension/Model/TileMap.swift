@@ -18,6 +18,15 @@ class TileMap<T> {
         self.buf = [T](repeating: initialTileValue, count: capacity)
     }
     
+    init(size: IntVector, initialTileValueBuilder: (IntVector) -> T) {
+        self.size = size
+        self.buf = []
+        
+        for position in self.size.rangeTo() {
+            self.buf.append(initialTileValueBuilder(position))
+        }
+    }
+    
     func getTile(at position: IntVector) -> T {
         let position = self.getPositionInBuf(of: position)
         return buf[position]
@@ -26,6 +35,10 @@ class TileMap<T> {
     func setTile(tile: T, at position: IntVector) {
         let position = self.getPositionInBuf(of: position)
         buf[position] = tile
+    }
+    
+    func map<M>(_ mapper: (T) -> M) -> TileMap<M> {
+        return TileMap<M>(size: self.size, initialTileValueBuilder: {mapper(self.getTile(at: $0))})
     }
     
     private func getPositionInBuf(of: IntVector) -> Int {

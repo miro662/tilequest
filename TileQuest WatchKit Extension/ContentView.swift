@@ -8,31 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var gameState: GameState = GameState.correct(size: IntVector(x: 4, y: 4))
+    
     var body: some View {
         let sampleImage = UIImage(named: "TiledImage")!
-        let tilemap = getTilemap()
+        let tilemap: TileMap<TilemapViewTile> = gameState.map.map {
+            switch $0 {
+            case Tile.occupied(let position):
+                return TilemapViewTile.tile(position)
+            case Tile.empty:
+                return TilemapViewTile.empty
+            }
+        }
         TilemapView(image: sampleImage, tilemap: tilemap, spacing: 5.0, onTileTapped: {
             position in print(position.description)
         }).navigationBarHidden(true)
-    }
-    
-    private func getTilemap() -> TileMap<TilemapViewTile> {
-        let size = IntVector(x: 4, y: 4)
-        let tilemap = TileMap<TilemapViewTile>(size: size, initialTileValue: .tile(IntVector(x: 1, y: 1)))
-        for x in 0..<size.x {
-            for y in 0..<size.y {
-                let position = IntVector(x: x, y: y)
-                tilemap.setTile(tile: .tile(position), at: position)
-            }
-        }
-        tilemap.setTile(tile: .empty, at: IntVector(x: 1, y: 1))
-        return tilemap
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            
     }
 }
